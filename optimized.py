@@ -800,8 +800,7 @@ def find_fixpoint(smbdpn, rh_automata, init):
         d_i = d_next
     d_fp = d_i
     return d_fp
-# for syscalls
-lambda s, a: s.find('syscall_{}_from'.format(a)) != -1
+
 def ltl_model_check_smdpn(smpdn, init, ltl, labelled=lambda s, a: s.find(a) != -1):
     if len(ltl) != len(smpdn):
         return False

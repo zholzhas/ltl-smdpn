@@ -11,12 +11,19 @@ The repository provides the following:
  * `constructor.py` - algorithm for translating binary files into SM-DPNs
 
 __Warning__: the algorithms for working with binary files rely on
-ANGR (which must be installed). Moreover, ANGR is not very reliable as it fails in many cases, and 
-its reliability changes from version to version.
+ANGR (which must be installed). However, ANGR is not very reliable as it fails in many cases, and 
+its reliability changes from version to version. For us, version
+9.2.139 proved to work in most cases. However, from our observations,
+the same version does not work the same on different machines.
+
+## Results
+
 
 We were able to detect the following versions of common malware:
- * Mirai - sha256sum: 6f1a931aa90469c53bbb911ca18dd32a029e90b7b65e7a90134aa533a6c26fe3
+ * Mirai - sha256sum: e86778bfb02461a8219a2d8ae1efda77ffd9d942dcff60c9eb95df537b2e14f2 (MalwareBazaar)
  * Gozi - sha256sum:
  b1ed0af6d7c34540bd571794b6a36fbe73f29f38ee8de4be70726d485500c6b1
+ (MalwareBazaar)
  * Backdoor - sha256sum:
  6fa44454e29bc227b51fbfb54676db080e6a39cf2cb8e9f87559db02b316d5e1
+ (Virusshare)
