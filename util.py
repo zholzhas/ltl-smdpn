@@ -2,7 +2,6 @@ from itertools import chain, combinations
 import subprocess
 from promela_parser import Ltl2baParser, parse_transitions
 import argparse
-import graphviz
 import random
 import csv
 import time
@@ -213,3 +212,28 @@ def getRandomLtl(smdpn, length):
             ltl = '{} && (<> {})'.format(ltl, state)
         res.append(ltl)
     return res
+
+def computeClusters(smdpn):
+    max_cluster_num = 0
+    cluster_nums = [0 for i in smdpn]
+    for i, smdpds in enumerate(smdpn):
+        cluster_num = 0
+        visited = set()
+        for state in smdpds[0]:
+                if state in visited:
+                    continue
+                cluster_num += 1
+                stack = [state]
+                while len(stack) > 0:
+                    cur = stack.pop()
+                    if cur in visited:
+                        continue
+                    visited.add(cur)
+                    for r in smdpds[2].values():
+                        if r[0] == cur:
+                            stack.append(r[2])
+                    for r in smdpds[3].values():
+                        if r[0] == cur:
+                            stack.append(r[2])
+        cluster_nums[i] = cluster_num
+    return cluster_nums

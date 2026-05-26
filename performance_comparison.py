@@ -126,14 +126,14 @@ dump_file = 'experiments/{}.pkl'.format(random.randint(0, 9999))
 
 def compareRandoms():
     random.seed(time.time())
-    state_size = random.randint(3, 10)
+    state_size = random.randint(3, 8)
     alphabet_size = random.randint(2, 5)
     num_dyn_rules = random.randint(1, 3)
     num_smrules = random.randint(1, 5)
     num_dpds = random.randint(1, 5)
     num_rules = random.randint(state_size * alphabet_size, state_size * alphabet_size * 2)
 
-    ltl_size = random.randint(1, 3)
+    ltl_size = random.randint(0, 2)
 
     smdpn = generateRandomSMDPN(num_dpds, state_size, alphabet_size, num_rules, num_dyn_rules, num_smrules)
     ltl = getRandomLtl(smdpn, ltl_size)

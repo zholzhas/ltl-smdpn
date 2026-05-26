@@ -475,21 +475,10 @@ def remove_epsilon(automaton):
 
 
 # Compute the Self-Modifying Buchi Dynamic Pushdown System (SM-BDPDS)
-def compute_bp_optimized[PS](
-        ba: tuple[set[str], set[tuple[str, set[str], str]], set[str], set[str]],
-        dpds: tuple[
-            set[PS],
-            set[str],
-            dict[str, tuple[4] | tuple[6]]
-        ]
-    ) -> tuple[
-            set[tuple[PS, str]],
-            set[str],
-            dict[str, tuple[4] | tuple[6]],
-            set[tuple[PS, str]],
-            dict[str, list[str]],
-            str
-        ]:
+def compute_bp_optimized(
+        ba,
+        dpds
+    ):
     (states, alphabet, rules) = dpds
     (states, transitions, init, acc) = ba
     newrules = {}
