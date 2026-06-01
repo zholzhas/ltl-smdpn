@@ -15,10 +15,13 @@ def sizeof_fmt(num, suffix="B"):
 
 
 max_file = 0
-for filename in glob.glob("results_*.pkl"):
-    max_file = max(max_file, int(filename[len("results_") : -len(".pkl")]))
+filename = ''
+for f in glob.glob("experiments copy/results_*.pkl"):
+    cur  = int(f[f.find('results_'):][len("results_") : -len(".pkl")])
+    if cur > max_file:
+        max_file = cur
+        filename = f
 
-filename = f"results_{max_file}.pkl"
 
 with open(filename, "rb") as f:
     data = pickle.load(f)
@@ -27,7 +30,8 @@ res_latex = ""
 timeout_str = "{\\bf \\color{red} TIMEOUT}"
 rows = []
 for d in data:
-    ba = max(len(util.construct_ba(l)) for l in d["ltl"])
+    print(d['ltl'])
+    ba = max(len(util.construct_ba(l)[1]) for l in d["ltl"])
 
     opt_time_avg = round(numpy.average(d["res"]["optimized"]["time"]), 2)
     opt_time_var = round(numpy.std(d["res"]["optimized"]["time"]), 2)
@@ -65,8 +69,8 @@ for d in data:
         ]
 
     rows.append(row)
-# rows_sorted = sorted(rows, key=lambda r: int(r[2][: r[2].find(" + ")]))
-rows_sorted = rows
+rows_sorted = sorted(rows, key=lambda r: int(r[2][: r[2].find(" + ")]))
+# rows_sorted = rows
 for row in rows_sorted:
     line = " & ".join(row) + "\\\\ \\hline \n"
     res_latex += line

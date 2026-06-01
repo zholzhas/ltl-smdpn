@@ -4,6 +4,7 @@ experiments/*.elf
 *.pkl
 
 *.exe
+*.exe_SMDPDS_patch
 *.pkl
 *.csv
 ./*.txt

@@ -198,7 +198,7 @@ def compareRandoms():
 #   2. `python performance_comparison.py rerun` will go through successful experiments
 #       and rerun them 5 times to get average values and deviation.
 if __name__ == "__main__":
-    if sys.argv[1] == "rerun":
+    if len(sys.argv) > 1 and sys.argv[1] == "rerun":
         data = []
 
         for filename in glob.glob("experiments/*.pkl"):
