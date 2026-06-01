@@ -2,7 +2,10 @@ experiments/*.pkl
 experiments/*.exe
 experiments/*.elf
 
+*.exe
+*.pkl
 *.csv
+./*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
