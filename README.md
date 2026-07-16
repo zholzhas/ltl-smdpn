@@ -20,6 +20,46 @@ the same version does not work the same on different machines.
 
 ## Results
 
+### Reproducing the Performance Comparison Table
+
+#### To reproduce the table
+The repository contains images of SM-DPN models used for performance
+comparison in the paper (`experiments/paper.pkl`). To reproduce the table
+from these images, first, run:
+```
+python performance_comparison.py rerun
+```
+This script will create files `results_*.pkl`, each containing results
+of both algorithms on the images from `experiments/paper.pkl`.
+
+To construct the table from these results, run:
+```
+python latex_table.py
+```
+It will output the table used in the paper (the table also contains 
+standard deviation that we omitted in the paper for readability).
+
+#### To reproduce the whole experiment
+You might want to compare performance on newly generated models (not those
+in the paper). To generate new models, run:
+```
+python performance_comparison.py
+```
+The script will populate the `experiments` folder with new images of SM-DPN
+models. The script **WILL NOT TERMINATE** until you interrupt it with Ctrl+C.
+You might also want to delete the `experiments/paper.pkl` file
+to exclude images used in the paper.
+
+Then, continue like in the previous section: 
+1. Run:
+```
+python performance_comparison.py rerun
+```
+2. And then:
+```
+python latex_table.py
+```
+
 ### Malware Detection
 
 We were able to detect the following versions of common malware:

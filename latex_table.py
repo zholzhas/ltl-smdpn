@@ -7,17 +7,17 @@ import util
 
 
 def sizeof_fmt(num, suffix="B"):
-    for unit in ("", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"):
+    for unit in ("", "K", "M", "G"):
         if abs(num) < 1024.0:
             return f"{num:3.1f}{unit}{suffix}"
         num /= 1024.0
-    return f"{num:.1f}Yi{suffix}"
+    return f"{num:.1f}T{suffix}"
 
 
 max_file = 0
-filename = ''
-for f in glob.glob("experiments copy/results_*.pkl"):
-    cur  = int(f[f.find('results_'):][len("results_") : -len(".pkl")])
+filename = ""
+for f in glob.glob("results_*.pkl"):
+    cur = int(f[f.find("results_") :][len("results_") : -len(".pkl")])
     if cur > max_file:
         max_file = cur
         filename = f
@@ -30,8 +30,14 @@ res_latex = ""
 timeout_str = "{\\bf \\color{red} TIMEOUT}"
 rows = []
 for d in data:
-    print(d['ltl'])
     ba = max(len(util.construct_ba(l)[1]) for l in d["ltl"])
+
+    if (
+        d["res"]["optimized"]["time"] == "TIMEOUT"
+        or d["res"]["optimized"]["time"][0] == "TIMEOUT"
+        or "TIMEOUT" in d["res"]["optimized"]["time"]
+    ):
+        continue
 
     opt_time_avg = round(numpy.average(d["res"]["optimized"]["time"]), 2)
     opt_time_var = round(numpy.std(d["res"]["optimized"]["time"]), 2)

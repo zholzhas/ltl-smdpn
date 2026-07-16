@@ -110,6 +110,10 @@ def handle(_a, _b):
 def compareTimes(smdpn, init, ltl, timeout_naive=TIMEOUT):
     global TIMEOUT
 
+    print(
+        f"Size: {len(smdpn)} proc {max(len(construct_ba(f)[1]) for f in ltl)} ltl, {len(smdpn[0][2])} rules, {len(smdpn[0][3])} smrules"
+    )
+
     signal.signal(signal.SIGALRM, handle)
     signal.alarm(TIMEOUT)
     opt_timeout = False
@@ -205,29 +209,29 @@ if __name__ == "__main__":
             with open(filename, "rb") as f:
                 data += pickle.load(f)
 
-        data = [
-            r
-            for r in data
-            if isinstance(r["results"]["optimized"][0], float)
-            and len(r["model"][0][0]) <= 8
-        ]
+        data = [r for r in data if isinstance(r["results"]["optimized"][0], float)]
+        # sort by number of proceses:
+        data = sorted(data, key=lambda r: len(r["model"]))
+        # sort by smrules
+        data = sorted(data, key=lambda r: len(r["model"][0][3]))
+        # sort by rules:
+        data = sorted(data, key=lambda r: len(r["model"][0][2]))
 
         stats = []
         for di, d in enumerate(data):
             print(f"model {di}/{len(data)}")
-            if di < 24:
-                continue
             num = len(stats)
             results = []
-            for i in range(5):
-                print(f"run {i}/9")
+            num_runs = 5
+            for i in range(num_runs):
+                print(f"run {i + 1}/{num_runs}")
                 naive_timeout = TIMEOUT
-                if (
-                    d["results"]["naive"][0] == "TIMEOUT"
-                    or d["results"]["naive"][0] > 3000
-                ):
-                    print(f"naive should timeout: {d['results']['naive'][0]}")
-                    naive_timeout = 2
+                # if (
+                #     d["results"]["naive"][0] == "TIMEOUT"
+                #     or d["results"]["naive"][0] > 3000
+                # ):
+                #     print(f"naive should timeout: {d['results']['naive'][0]}")
+                #     naive_timeout = 2
 
                 (optimized, naive) = compareTimes(
                     d["model"], d["init"], d["ltl"], naive_timeout

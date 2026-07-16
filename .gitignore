@@ -1,6 +1,7 @@
 experiments/*.pkl
 experiments/*.exe
 experiments/*.elf
+experiments/*
 *.pkl
 
 *.exe
@@ -8,6 +9,8 @@ experiments/*.elf
 *.pkl
 *.csv
 ./*.txt
+
+!experiments/paper.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
