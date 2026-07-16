@@ -18,6 +18,12 @@ its reliability changes from version to version. For us, version
 9.2.139 proved to work in most cases. However, from our observations,
 the same version does not work the same on different machines.
 
+## Requirements
+Running the scripts in this repository requires the following:
+1. Linux
+2. Python 3
+3. LTL2BA (can be found here [https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/]())
+
 ## Results
 
 ### Reproducing the Performance Comparison Table
