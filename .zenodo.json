@@ -1,0 +1,39 @@
+{
+  "creators": [
+    {
+      "name": "Touili, Tayssir",
+      "orcid": "0000-0002-1134-2220",
+      "affiliation": "IRIF, CNRS, University Paris Cité",
+      "type": "Supervisor"
+    },
+    {
+      "name": "Zhangeldinov, Olzhas",
+      "affiliation": "IRIF, CNRS, University Paris Cité",
+      "orcid": "0009-0006-6381-9138",
+      "type": "ProjectMember"
+    }
+  ],
+  "contributors": [],
+  "title": "LTL Model Checking of Concurrent Self-Modifying Code",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.1007/3-540-44585-4_6",
+      "relation": "Requires",
+      "resource_type": "publication-article"
+    }
+  ],
+  "keywords": [
+    "computer science",
+    "Pushdown systems",
+    "LTL model checking",
+    "Self-modifying code",
+    "Concurrent programs",
+    "Malware detection"
+  ],
+  "license": "mit",
+  "upload_type": "software",
+  "language": "eng",
+  "grants": [{ "id": "ANR-22-PECY-0007" }],
+  "communities": []
+}
