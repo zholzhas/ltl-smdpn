@@ -21,10 +21,15 @@ the same version does not work the same on different machines.
 ## Requirements
 Running the scripts in this repository requires the following:
 1. Linux
-2. Python 3
+2. Python 3 (with `numpy`)
 3. LTL2BA (can be found here [https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/]())
 
 Make sure that LTL2BA is accessible globally (with the `ltl2ba` command)
+
+Install numpy:
+```
+pip install numpy
+```
 
 
 ## Results
