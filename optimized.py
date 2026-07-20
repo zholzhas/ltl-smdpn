@@ -4,7 +4,6 @@ import time
 import sys
 from typing import Any
 from enum import Enum
-from alive_progress import alive_it
 
 PROGRESS = False
 
@@ -269,7 +268,7 @@ class SMDPDS:
         tmp_phase_rules = {}
 
         # set of transtions (p/theta, gamma/D, p'/theta')
-        
+
         trans = remove_epsilon(transitions)
 
         # Set of states that we checked epsilon transitions into themselves (q -- e --> q)
@@ -492,9 +491,6 @@ class SMDPDS:
         debug_memory_start(1)
         total = len(heads) * len(rule_pow)
 
-        if PROGRESS:
-            heads = alive_it(heads)
-
         for (state, gamma) in heads:
             for phase in list(rule_pow):
                 # print('Checking (<{}, {}>, {}) ({}/{})'.format(state, gamma, phase, i, total))
@@ -559,7 +555,7 @@ class SMDPDS:
 
                 debug_memory_peek(1)
         return repeating_heads
-   
+
 # Compute the Self-Modifying Buchi Dynamic Pushdown System (SM-BDPDS)
 def compute_bp_optimized(
         ba,
@@ -836,5 +832,3 @@ def ltl_model_check_smdpn(smpdn, init, ltl, labelled=lambda s, a: s.find(a) != -
         if valid == False:
             return False
     return True
-
-

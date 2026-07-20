@@ -24,6 +24,9 @@ Running the scripts in this repository requires the following:
 2. Python 3
 3. LTL2BA (can be found here [https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/]())
 
+Make sure that LTL2BA is accessible globally (with the `ltl2ba` command)
+
+
 ## Results
 
 ### Reproducing the Performance Comparison Table

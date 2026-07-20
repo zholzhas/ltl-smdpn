@@ -9,8 +9,6 @@ import time
 import traceback
 import tracemalloc
 
-import numpy
-
 from naive import ltl_model_check_smdpn as ltl_naive
 from optimized import ltl_model_check_smdpn as ltl_optimized
 from util import *
